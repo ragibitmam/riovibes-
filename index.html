@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RioVibes - AI Music Generator</title>
+</head>
+<body>
+
+  <h1>Welcome to RioVibes</h1>
+  <p>Create emotional, romantic AI-generated music from your lyrics.</p>
+  <a href="https://riovibes.com">Visit main site</a> <!-- Replace .com domain here later -->
+
+  <hr>
+
+  <h2>Write your lyrics below:</h2>
+  <textarea id="lyrics" rows="6" cols="50" placeholder="Type your emotional lyrics here..."></textarea><br><br>
+
+  <button onclick="generateSong()">Generate Song</button>
+
+  <h3>Your AI-generated song:</h3>
+  <!-- Just a demo audio for now -->
+  <audio controls>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    function generateSong() {
+      const lyrics = document.getElementById("lyrics").value;
+      if (lyrics.trim() === "") {
+        alert("Please write some lyrics first.");
+      } else {
+        alert("AI is generating your song (this is a demo). 🎵");
+        // Future: AI song generator will go here
+      }
+    }
+  </script>
+
+</body>
+</html>
