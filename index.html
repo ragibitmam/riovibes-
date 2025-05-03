@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RioVibes - AI Music Generator</title>
   <style>
+    * {
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -16,26 +21,58 @@
       justify-content: center;
       height: 100vh;
       padding: 20px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
 
     h1 {
       font-size: 2.5rem;
       color: #00f7ff;
       text-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
-    select, textarea {
+    textarea {
       width: 90%;
       max-width: 600px;
-      margin: 10px 0;
+      height: 150px;
       padding: 15px;
       border: none;
       border-radius: 10px;
       background: #1a1a1a;
       color: #fff;
       font-size: 1rem;
+      resize: none;
       box-shadow: 0 0 10px #00f7ff44;
+      transition: box-shadow 0.3s ease;
+    }
+
+    textarea:focus {
+      outline: none;
+      box-shadow: 0 0 20px #00f7ffaa;
+    }
+
+    select {
+      margin-top: 15px;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 10px;
+      background: #1a1a1a;
+      color: #00f7ff;
+      border: 2px solid #00f7ff88;
+      box-shadow: 0 0 10px #00f7ff33;
+      width: 200px;
+    }
+
+    select:focus {
+      outline: none;
+      box-shadow: 0 0 20px #00f7ff88;
     }
 
     button {
@@ -47,7 +84,7 @@
       border-radius: 8px;
       color: #000;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease, background 0.3s ease;
       box-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff;
     }
 
@@ -57,7 +94,7 @@
     }
 
     .output {
-      margin-top: 30px;
+      margin-top: 40px;
       width: 90%;
       max-width: 600px;
       min-height: 100px;
@@ -65,21 +102,22 @@
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 0 10px #00f7ff33;
+      transition: all 0.3s ease;
     }
   </style>
 </head>
 <body>
   <h1>RioVibes</h1>
+  <textarea placeholder="Write your lyrics here to turn them into a song..."></textarea>
 
-  <select id="mood">
-    <option value="Romantic">Romantic</option>
-    <option value="Sad">Sad</option>
-    <option value="Chill">Chill</option>
-    <option value="Pop">Pop</option>
-    <option value="Lo-fi">Lo-fi</option>
+  <select id="genre">
+    <option value="romantic">Romantic</option>
+    <option value="pop">Pop</option>
+    <option value="lofi">Lofi</option>
+    <option value="sad">Sad</option>
+    <option value="soft">Soft</option>
   </select>
 
-  <textarea placeholder="Write your lyrics here to turn them into a song..."></textarea>
   <button>Generate Song</button>
 
   <div class="output">
@@ -89,20 +127,20 @@
   <script>
     const button = document.querySelector("button");
     const textarea = document.querySelector("textarea");
-    const mood = document.getElementById("mood");
     const output = document.querySelector(".output");
+    const genreSelect = document.getElementById("genre");
 
     button.addEventListener("click", () => {
       const lyrics = textarea.value.trim();
-      const selectedMood = mood.value;
+      const genre = genreSelect.value;
 
       if (lyrics === "") {
         output.innerHTML = "❌ Please enter some lyrics to generate a song.";
       } else {
         output.innerHTML = `
-          <p>🎵 Generating your <strong>${selectedMood}</strong> song...</p>
+          <p>🎵 Generating your <strong>${genre}</strong> style song...</p>
           <p><em>"${lyrics.slice(0, 50)}..."</em></p>
-          <p>✅ Your AI-based ${selectedMood} song is being prepared! (Demo mode)</p>
+          <p>✅ Your AI-based ${genre} song is being prepared! (This is a demo)</p>
         `;
       }
     });
