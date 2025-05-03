@@ -22,20 +22,19 @@
       font-size: 2.5rem;
       color: #00f7ff;
       text-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
-    textarea {
+    select, textarea {
       width: 90%;
       max-width: 600px;
-      height: 150px;
+      margin: 10px 0;
       padding: 15px;
       border: none;
       border-radius: 10px;
       background: #1a1a1a;
       color: #fff;
       font-size: 1rem;
-      resize: none;
       box-shadow: 0 0 10px #00f7ff44;
     }
 
@@ -58,7 +57,7 @@
     }
 
     .output {
-      margin-top: 40px;
+      margin-top: 30px;
       width: 90%;
       max-width: 600px;
       min-height: 100px;
@@ -71,6 +70,15 @@
 </head>
 <body>
   <h1>RioVibes</h1>
+
+  <select id="mood">
+    <option value="Romantic">Romantic</option>
+    <option value="Sad">Sad</option>
+    <option value="Chill">Chill</option>
+    <option value="Pop">Pop</option>
+    <option value="Lo-fi">Lo-fi</option>
+  </select>
+
   <textarea placeholder="Write your lyrics here to turn them into a song..."></textarea>
   <button>Generate Song</button>
 
@@ -81,22 +89,23 @@
   <script>
     const button = document.querySelector("button");
     const textarea = document.querySelector("textarea");
+    const mood = document.getElementById("mood");
     const output = document.querySelector(".output");
 
     button.addEventListener("click", () => {
       const lyrics = textarea.value.trim();
+      const selectedMood = mood.value;
 
       if (lyrics === "") {
         output.innerHTML = "❌ Please enter some lyrics to generate a song.";
       } else {
         output.innerHTML = `
-          <p>🎵 Generating your emotional song...</p>
+          <p>🎵 Generating your <strong>${selectedMood}</strong> song...</p>
           <p><em>"${lyrics.slice(0, 50)}..."</em></p>
-          <p>✅ Your AI-based romantic pop song is being prepared! (This is a demo)</p>
+          <p>✅ Your AI-based ${selectedMood} song is being prepared! (Demo mode)</p>
         `;
       }
     });
   </script>
 </body>
 </html>
-
