@@ -2,40 +2,81 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RioVibes - AI Music Generator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f0f0f;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #00f7ff;
+      text-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff;
+      margin-bottom: 30px;
+    }
+
+    textarea {
+      width: 90%;
+      max-width: 600px;
+      height: 150px;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 1rem;
+      resize: none;
+      box-shadow: 0 0 10px #00f7ff44;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      background: #00f7ff;
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff;
+    }
+
+    button:hover {
+      background: #00e0ff;
+      transform: scale(1.05);
+    }
+
+    .output {
+      margin-top: 40px;
+      width: 90%;
+      max-width: 600px;
+      min-height: 100px;
+      background: #1f1f1f;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px #00f7ff33;
+    }
+  </style>
 </head>
 <body>
+  <h1>RioVibes</h1>
+  <textarea placeholder="Paste your emotional lyrics here..."></textarea>
+  <button>Generate Song</button>
 
-  <h1>Welcome to RioVibes</h1>
-  <p>Create emotional, romantic AI-generated music from your lyrics.</p>
-  <a href="https://riovibes.com">Visit main site</a> <!-- Replace .com domain here later -->
-
-  <hr>
-
-  <h2>Write your lyrics below:</h2>
-  <textarea id="lyrics" rows="6" cols="50" placeholder="Type your emotional lyrics here..."></textarea><br><br>
-
-  <button onclick="generateSong()">Generate Song</button>
-
-  <h3>Your AI-generated song:</h3>
-  <!-- Just a demo audio for now -->
-  <audio controls>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
-
-  <script>
-    function generateSong() {
-      const lyrics = document.getElementById("lyrics").value;
-      if (lyrics.trim() === "") {
-        alert("Please write some lyrics first.");
-      } else {
-        alert("AI is generating your song (this is a demo). 🎵");
-        // Future: AI song generator will go here
-      }
-    }
-  </script>
-
+  <div class="output">
+    <!-- AI-generated song will appear here -->
+    <p>🎶 Your song will be generated here soon...</p>
+  </div>
 </body>
 </html>
