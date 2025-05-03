@@ -75,8 +75,27 @@
   <button>Generate Song</button>
 
   <div class="output">
-    <!-- AI-generated song will appear here -->
     <p>🎶 Your song will be generated here soon...</p>
   </div>
+
+  <script>
+    const button = document.querySelector("button");
+    const textarea = document.querySelector("textarea");
+    const output = document.querySelector(".output");
+
+    button.addEventListener("click", () => {
+      const lyrics = textarea.value.trim();
+
+      if (lyrics === "") {
+        output.innerHTML = "❌ Please enter some lyrics to generate a song.";
+      } else {
+        output.innerHTML = `
+          <p>🎵 Generating your emotional song...</p>
+          <p><em>"${lyrics.slice(0, 50)}..."</em></p>
+          <p>✅ Your AI-based romantic pop song is being prepared! (This is a demo)</p>
+        `;
+      }
+    });
+  </script>
 </body>
 </html>
